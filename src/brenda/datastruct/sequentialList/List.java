@@ -20,14 +20,25 @@ public class List<T> {
         return this.totalOfElements;
     }
 
-    public void insert(T element, int position){
+    public boolean insert(T element, int position){
         if(position >= 0 && position < this.data.length){
             for (int i = this.totalOfElements; i > position; i--){
-                data[i] = data[i-1];
+                this.data[i] = this.data[i-1];
             }
-            data[position] = element;
-            totalOfElements++;
+            this.data[position] = element;
+            this.totalOfElements++;
+            return true;
         }
+        return false;
+    }
+
+    public boolean insert(T element){
+        if(this.totalOfElements < this.data.length){
+            this.data[this.totalOfElements] = element;
+            this.totalOfElements++;
+            return true;
+        }
+        return false;
     }
 
     public T searchElement(T element){
