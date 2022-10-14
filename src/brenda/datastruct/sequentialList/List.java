@@ -21,13 +21,23 @@ public class List<T> {
     }
 
     public void insert(T element, int position){
-        if(position < this.data.length && position >= 0){
+        if(position >= 0 && position < this.data.length){
             for (int i = this.totalOfElements; i > position; i--){
                 data[i] = data[i-1];
             }
             data[position] = element;
             totalOfElements++;
         }
+    }
+
+    public T searchElement(T element){
+        int i = 0;
+        while(i < this.totalOfElements){
+            if(element == this.data[i]) return this.data[i];
+            else i++;
+        }
+
+        return null;
     }
 
 }
