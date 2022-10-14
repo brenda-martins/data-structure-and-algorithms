@@ -1,18 +1,18 @@
 package brenda.datastruct.sequentialList;
 
 public class List<T> {
-    T data[];
-    int totalOfElements;
+    private T elements[];
+    private int totalOfElements;
 
 
     public List(final int aSize){
-        this.data = (T[]) new Object[aSize];
+        this.elements = (T[]) new Object[aSize];
         this.totalOfElements = 0;
     }
 
     public void list(){
         for(int i = 0; i < this.totalOfElements; i++){
-            System.out.println(data[i]);
+            System.out.println(elements[i]);
         }
     }
 
@@ -20,14 +20,43 @@ public class List<T> {
         return this.totalOfElements;
     }
 
-    public void insert(T element, int position){
-        if(position < this.data.length && position >= 0){
+    public boolean insert(T element, int position){
+        if(position >= 0 && position < this.elements.length){
             for (int i = this.totalOfElements; i > position; i--){
-                data[i] = data[i-1];
+                this.elements[i] = this.elements[i-1];
             }
-            data[position] = element;
-            totalOfElements++;
+            this.elements[position] = element;
+            this.totalOfElements++;
+            return true;
         }
+        return false;
     }
+
+    public boolean insert(T element){
+        if(this.totalOfElements < this.elements.length){
+            this.elements[this.totalOfElements] = element;
+            this.totalOfElements++;
+            return true;
+        }
+        return false;
+    }
+
+    public T searchElement(T element){
+        int i = 0;
+        while(i < this.totalOfElements){
+            if(element == this.elements[i]) return this.elements[i];
+            else i++;
+        }
+        return null;
+    }
+
+//    public void sort(){
+//        for(int i = this.data.length - 1; i > 0; i++){
+//            if(this.data[i] < this.data[i-1]){
+//
+//            }
+//        }
+//    }
+
 
 }
