@@ -9,10 +9,8 @@ public class HeapSort {
             vector[i] = (int) (Math.random() * vector.length);
         }
 
-        System.out.println("Vector: ");
-        for(int i = 0; i < vector.length; i++){
-            System.out.print(vector[i] + " ");
-        }
+        print(vector, "Vector: ");
+
 
         int length = vector.length;
         int start = (length / 2 - 1);
@@ -21,10 +19,7 @@ public class HeapSort {
             applyHeap(vector, length, i);
         }
 
-        System.out.println("\n\nVector almost ordered: ");
-        for(int i = 0; i < vector.length; i++){
-            System.out.print(vector[i] + " ");
-        }
+        print(vector, "\n\nVector almost ordered: ");
 
         for(int x = length - 1; x > 0; x--){
             int aux = vector[0];
@@ -34,7 +29,11 @@ public class HeapSort {
             applyHeap(vector, x, 0);
         }
 
-        System.out.println("\n\nVector ordered: ");
+        print(vector,"\n\nVector ordered: ");
+    }
+
+    private static void print(int[] vector, String message){
+        System.out.println(message);
         for(int i = 0; i < vector.length; i++){
             System.out.print(vector[i] + " ");
         }
