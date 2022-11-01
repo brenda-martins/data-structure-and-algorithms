@@ -6,7 +6,6 @@ public class QuickSort {
 
     public static void main(String[] args) {
 
-
         for(int i = 0; i < vector.length; i++){
             vector[i] = (int) (Math.random() * vector.length);
         }

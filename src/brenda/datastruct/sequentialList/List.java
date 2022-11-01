@@ -49,14 +49,4 @@ public class List<T> {
         }
         return null;
     }
-
-//    public void sort(){
-//        for(int i = this.data.length - 1; i > 0; i++){
-//            if(this.data[i] < this.data[i-1]){
-//
-//            }
-//        }
-//    }
-
-
 }
