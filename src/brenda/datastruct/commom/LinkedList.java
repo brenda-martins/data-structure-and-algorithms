@@ -24,6 +24,18 @@ public class LinkedList {
         this.size++;
     }
 
+    public void addAtBeginning(final String aValue){
+        Element newElement = new Element(aValue);
+        if(this.firstElement == null && this.lastElement == null){
+            this.firstElement = newElement;
+            this.lastElement = newElement;
+        }else{
+            newElement.setNextElement(this.firstElement);
+            this.firstElement = newElement;
+        }
+        this.size++;
+    }
+
     public void remove(String aValue){
         Element procedingElement = null;
         Element actualElement = this.firstElement;
