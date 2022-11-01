@@ -37,4 +37,18 @@ public class Tree<T extends Comparable> {
             }
         }
     }
+
+    public void printInOrder(Element<T> anElement){
+        if(anElement != null){
+            printInOrder(anElement.getLeft());
+            System.out.println(anElement.getValue());
+            printInOrder(anElement.getRigth());
+        }
+    }
+
+    public Element<T> getRoot() {
+        return root;
+    }
+
+
 }
