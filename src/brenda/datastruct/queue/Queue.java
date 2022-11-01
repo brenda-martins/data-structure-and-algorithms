@@ -1,5 +1,7 @@
-package brenda.queue;
+package brenda.datastruct.queue;
 
+
+import brenda.datastruct.commom.LinkedList;
 
 public class Queue {
 

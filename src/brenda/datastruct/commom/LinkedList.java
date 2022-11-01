@@ -1,4 +1,4 @@
-package brenda.queue;
+package brenda.datastruct.commom;
 
 public class LinkedList {
 

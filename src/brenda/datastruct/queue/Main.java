@@ -1,4 +1,4 @@
-package brenda.queue;
+package brenda.datastruct.queue;
 
 public class Main {
 
