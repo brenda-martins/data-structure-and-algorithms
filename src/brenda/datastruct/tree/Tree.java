@@ -38,6 +38,57 @@ public class Tree<T extends Comparable> {
         }
     }
 
+    public boolean remove(T value){
+        Element<T> actualElement = this.root;
+        Element<T> father = null;
+
+        while(actualElement != null){
+            if(actualElement.getValue().equals(value)){
+              break;
+            }else if (actualElement.getValue().compareTo(value) == -1){ //actual is minor
+                father = actualElement;
+                actualElement = actualElement.getLeft();
+            }else{
+                father = actualElement;
+                actualElement = actualElement.getRigth();
+            }
+        }
+
+        if(actualElement != null){
+            if(actualElement.getRigth() != null){//has two children
+
+            }else if(actualElement.getLeft() != null){ //has children only on the left
+                Element<T> newElement = actualElement.getLeft();
+                Element<T> fatherNewElement = actualElement;
+                while (newElement.getRigth() != null){
+                    fatherNewElement = newElement;
+                    newElement = newElement.getRigth();
+                }
+
+                if(actualElement.getValue().compareTo(father.getValue()) == -1){
+                    father.setLeft(newElement);
+                }else{
+                    father.setRigth(newElement);
+                }
+
+                //remove element from tree
+                if(newElement.getValue().compareTo(fatherNewElement.getValue()) == -1){
+                    fatherNewElement.setLeft(null);
+                }else{
+                    fatherNewElement.setRigth(null);
+                }
+             }else{//has no children
+                if(actualElement.getValue().compareTo(father.getValue()) == -1){
+                    father.setLeft(null);
+                }else{
+                    father.setRigth(null);
+                }
+            }
+        }
+
+        return true;
+    }
+
     public void printInOrder(Element<T> anElement){
         if(anElement != null){
             printInOrder(anElement.getLeft());
