@@ -45,7 +45,7 @@ public class Tree<T extends Comparable> {
         while(actualElement != null){
             if(actualElement.getValue().equals(value)){
               break;
-            }else if (actualElement.getValue().compareTo(value) == -1){ //actual is minor
+            }else if (value.compareTo(actualElement.getValue()) == -1){ //actual is minor
                 father = actualElement;
                 actualElement = actualElement.getLeft();
             }else{
@@ -57,6 +57,28 @@ public class Tree<T extends Comparable> {
         if(actualElement != null){
             if(actualElement.getRigth() != null){//has two children
 
+                Element<T> newElement = actualElement.getRigth();
+                Element<T> fatherNewElement = actualElement;
+                while(newElement.getLeft() != null){
+                    fatherNewElement = newElement;
+                    newElement = newElement.getRigth();
+                }
+                if(father != null) {
+                    if (actualElement.getValue().compareTo(father.getValue()) == -1) {
+                        father.setLeft(newElement);
+                    } else {
+                        father.setRigth(newElement);
+                    }
+                }else{
+                    this.root = newElement;
+                }
+
+                if(newElement.getValue().compareTo(fatherNewElement.getValue()) == -1){
+                    fatherNewElement.setLeft(null);
+                }else{
+                    fatherNewElement.setRigth(null);
+                }
+
             }else if(actualElement.getLeft() != null){ //has children only on the left
                 Element<T> newElement = actualElement.getLeft();
                 Element<T> fatherNewElement = actualElement;
@@ -65,10 +87,14 @@ public class Tree<T extends Comparable> {
                     newElement = newElement.getRigth();
                 }
 
-                if(actualElement.getValue().compareTo(father.getValue()) == -1){
-                    father.setLeft(newElement);
+                if(father != null) {
+                    if (actualElement.getValue().compareTo(father.getValue()) == -1) {
+                        father.setLeft(newElement);
+                    } else {
+                        father.setRigth(newElement);
+                    }
                 }else{
-                    father.setRigth(newElement);
+                    this.root = newElement;
                 }
 
                 //remove element from tree
@@ -78,15 +104,21 @@ public class Tree<T extends Comparable> {
                     fatherNewElement.setRigth(null);
                 }
              }else{//has no children
-                if(actualElement.getValue().compareTo(father.getValue()) == -1){
-                    father.setLeft(null);
+
+                if(father != null) {
+                    if (actualElement.getValue().compareTo(father.getValue()) == -1) {
+                        father.setLeft(null);
+                    } else {
+                        father.setRigth(null);
+                    }
                 }else{
-                    father.setRigth(null);
+                    this.root = null;
                 }
             }
+            return true;
+        }else{
+            return false;
         }
-
-        return true;
     }
 
     public void printInOrder(Element<T> anElement){

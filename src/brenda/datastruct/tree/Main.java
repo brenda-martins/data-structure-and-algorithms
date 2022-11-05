@@ -6,15 +6,23 @@ public class Main {
         Tree<Integer> tree = new Tree<>();
 
         tree.add(10);
-        tree.add(5);
-        tree.add(2);
         tree.add(8);
-        tree.add(1);
-        tree.add(12);
-        tree.add(11);
+        tree.add(5);
         tree.add(9);
+        tree.add(7);
+        tree.add(18);
+        tree.add(13);
+        tree.add(20);
 
         System.out.println("In order: ");
+        tree.printInOrder(tree.getRoot());
+
+        tree.remove(13);
+        tree.remove(5);
+
+
+
+        System.out.println("After remove: ");
         tree.printInOrder(tree.getRoot());
     }
 }
