@@ -63,6 +63,7 @@ public class Tree<T extends Comparable> {
                     fatherNewElement = newElement;
                     newElement = newElement.getRigth();
                 }
+                newElement.setLeft(actualElement.getLeft());
                 if(father != null) {
                     if (actualElement.getValue().compareTo(father.getValue()) == -1) {
                         father.setLeft(newElement);

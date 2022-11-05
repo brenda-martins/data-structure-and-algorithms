@@ -19,6 +19,9 @@ public class Main {
 
         tree.remove(13);
         tree.remove(5);
+        tree.remove(8);
+        tree.remove(9);
+        tree.remove(10);
 
 
 
